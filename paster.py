@@ -7,7 +7,7 @@ def parse(s: str):
 e = parse("123")
 print(e)
 
-s = "1+2"
+s = "123+456"
 pos = s.find('+')
 print('pos',pos)
 

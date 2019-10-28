@@ -36,6 +36,31 @@ e = Add(1, Add(1,2))
 print(e.eval())
 assert e.eval() == 4
 
+e = Add(Val(1),Add(Val(2),Val(3)))
+assert e.eval() == 6
 
+class Sub(Binary):
+    __slots__=['left', 'right']
+    def __init__(self, a, b):
+        self.left = toExpr(a)   # aとb は式
+        self.right = toExpr(b)
+    def eval(self):
+        return self.left.eval() - self.right.eval()
+
+class Mul(Binary):
+    __slots__=['left', 'right']
+    def __init__(self, a, b):
+        self.left = toExpr(a)   # aとb は式
+        self.right = toExpr(b)
+    def eval(self):
+        return self.left.eval() * self.right.eval()
+
+class Div(Binary):
+    __slots__=['left', 'right']
+    def __init__(self, a, b):
+        self.left = toExpr(a)   # aとb は式
+        self.right = toExpr(b)
+    def eval(self):
+        return self.left.eval() // self.right.eval()
 
 

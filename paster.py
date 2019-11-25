@@ -6,13 +6,13 @@ def parse(s: str):
         s1 = s[0:pos]
         s2 = s[pois+1:]
         return Mul(parse(s1), parse(s2))
-    if s.find('+') > 0:
-        pos = s.find('+')
+    if s.find('*') > 0:
+        pos = s.find('*')
         s1 = s[0:pos]
         s2 = s[pos+1:]
         return Mul(parse(s1), parse(s2))
     return Val(int(s))
 
-e = parse("1+2+3")
+e = parse("1-2-3")
 print(e, e.eval())
 assert e.eval() == -4

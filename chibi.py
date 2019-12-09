@@ -106,7 +106,27 @@ def main():
                 break
             run(s, env)
     except EOFError:
-        return
-if __name__ == '__main__':
-    main()
-    
+        return env[self.name]
+
+
+def conv(tree):
+    if tree == 'Block':
+        return conv(tree[θ])
+    if tree == 'Val' or tree == 'Int':
+        return Val(int(str(tree)))
+    if tree =='Add':
+        return Add(conv(tree[θ]),conv(tree[1]))
+    if tree =='Sub':
+        return Sub(conv(tree[θ]),conv(tree[1]))
+    if tree =='Mul':
+        return Mod(conv(tree[θ],conv(tree[1])))
+    if tree =='Div':
+        return Div(conv(tree[θ]),conv(tree[1]))
+    if tree =='Mod':
+        return Mod(conv(tree[θ]),conv(tree[1]))
+    if tree =='Lt':
+        return Lt(conv(tree[θ],conv(tree[1])))
+    if tree =='Var':
+        return Var(conv(tree[θ]),conv(tree[1]))
+    if tree =='LetDec1':
+        return Assign(str(tree[θ]),conv(tree[1]))
